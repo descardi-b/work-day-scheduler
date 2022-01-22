@@ -1,39 +1,44 @@
+// current time variable
+var currentTime = moment();
+console.log(currentTime);
 
-// edit task option event listener
-$(".container").on("click", "div.task-box", function () {
+// hours variable
+var hours = $(".hour")
+console.log(hours)
 
-    console.log($(this));
+// target save button
+var saveButton = $(".saveBtn");
+console.log(saveButton);
+ 
+// target textarea
+var taskDescriptionInput = $("textarea")
 
-    var taskBoxClass = $(this).attr("class");
+// for loop for moment.js time comparison
+for (var i = 0; i < hours.length; i++) {
+    // parse the hour into the moment object
+    var hourHTML = hours[i].innerHTML
+    var taskTime = moment(hourHTML, "hA").hours();
 
-    var text = $(this)
-        .text()
-        .trim();
-    console.log(text);
+    console.log(taskTime);
 
-    var textInput = $("<textarea>")
-        .addClass(`form-control ${taskBoxClass}`)
-        .val(text);
+    if (moment(taskTime).isAfter(currentTime)) {
+        $(".hour").addClass("future");
+    }
 
-    $(this).after(textInput).remove();
+    if (taskTime === currentTime) {
+        $(".hour").addClass("present");
+    }
 
-    textInput.trigger("focus");
-});
+    if (moment(taskTime).isBefore(currentTime)) {
+        $(".hour").addClass("past");
+    }
+}
 
-$(".container").on("blur", "textarea", function () {
-    // get the textarea's current value/text
-    var text = $(this)
-        .val()
-        .trim();
+// all textareas are currently getting class of past
+// how to pull text from textarea to save to local storage
 
-    var taskBoxClass = $(this).attr("class");
-
-    var taskP = $("<div>")
-        .addClass(taskBoxClass)
-        .removeClass("form-control")
-        .html(text);
-
-    $(this).after(taskP).remove();
-});
-
- //  $(".container")
+saveButton.on("click", function() {
+    // target text in textarea
+    var storedTask = localStorage.setItem("Task", textArea.innerHTML)
+    console.log(storedTask);
+})
