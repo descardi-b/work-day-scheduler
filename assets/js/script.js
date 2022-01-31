@@ -20,6 +20,12 @@ console.log(saveButton);
 // target textarea
 var taskDescriptionInput = $("textarea").val();
 
+//
+var currentDay = $("#currentDay");
+var currentDayMoment = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+console.log(currentDayMoment);
+currentDay.html(currentDayMoment);
+
 saveButton.on("click", function() {
 
     // target the task in the sibling element with class "description"
