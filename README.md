@@ -12,3 +12,5 @@ in this challenge, i was tasked with: <br />
 here are some screenshots of my work:
 
 <img src="/assets/images/workday-scheduler-img-1.png">
+
+you can view the project yourself at <a href='https://descardi-b.github.io/workday-scheduler/'>this link</a>
